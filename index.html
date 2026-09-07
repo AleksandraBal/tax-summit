@@ -238,7 +238,19 @@ Reveal.initialize({
   hash: true,
   transition: 'fade',
   center: false,
+  showNotes: false,
+  pdfMaxPagesPerSlide: 1,
   pdfSeparateFragments: false
+}).then(function () {
+  function stripPrintChrome() {
+    document.querySelectorAll(
+      '.speaker-notes, .speaker-notes-pdf, .pause-overlay, .playback, .jump-to-slide'
+    ).forEach(function (el) {
+      el.remove();
+    });
+  }
+  stripPrintChrome();
+  window.addEventListener('beforeprint', stripPrintChrome);
 });
 </script>
 </body>

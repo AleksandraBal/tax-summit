@@ -209,10 +209,231 @@ section.invert .bullets li.punch{
   bottom: 26px;
 }
 
-/* ---------- Print / PDF ---------- */
+/* ---------- Print / PDF: match the on-screen slide, one page each ---------- */
+@page{
+  size: 13.333in 7.5in;
+  margin: 0;
+}
+
+html.reveal-print .reveal .slides section,
+html.print-pdf .reveal .slides section{
+  display: flex !important;
+  flex-direction: column !important;
+  padding: 76px 96px 68px 96px !important;
+  box-sizing: border-box !important;
+}
+
+html.reveal-print .reveal .speaker-notes,
+html.reveal-print .reveal .speaker-notes-pdf,
+html.print-pdf .reveal .speaker-notes,
+html.print-pdf .reveal .speaker-notes-pdf{
+  display: none !important;
+}
+
 @media print{
-  .reveal .slides section{ padding: 68px 88px 60px 88px; }
-  .reveal .slides section, section.invert, .pattern, .pattern.is-pick{
-    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  html, body{
+    width: 1280px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #fff !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .reveal .controls,
+  .reveal .progress,
+  .reveal .playback,
+  .reveal .speaker-notes,
+  .reveal .speaker-notes-pdf,
+  .reveal aside.notes{
+    display: none !important;
+  }
+  .reveal .speaker-notes::before,
+  .reveal .speaker-notes-pdf::before{
+    content: none !important;
+    display: none !important;
+  }
+
+  html:not(.print-pdf) .reveal{
+    width: 1280px !important;
+    height: auto !important;
+    overflow: visible !important;
+    background: #fff !important;
+    font-size: 32px !important;
+    color: var(--ink) !important;
+  }
+  html:not(.print-pdf) .reveal .slides{
+    position: static !important;
+    width: 1280px !important;
+    height: auto !important;
+    display: block !important;
+    overflow: visible !important;
+    transform: none !important;
+    text-align: left !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  html, body, .reveal, .reveal-viewport, .reveal .slides{
+    height: auto !important;
+    min-height: 0 !important;
+  }
+  .reveal > :not(.slides){
+    display: none !important;
+  }
+
+  html:not(.print-pdf) .reveal .slides section{
+    display: flex !important;
+    flex-direction: column !important;
+    visibility: visible !important;
+    position: relative !important;
+    width: 1280px !important;
+    height: 720px !important;
+    min-height: 720px !important;
+    max-height: 720px !important;
+    overflow: hidden !important;
+    left: auto !important;
+    top: auto !important;
+    margin: 0 !important;
+    padding: 76px 96px 68px 96px !important;
+    box-sizing: border-box !important;
+    opacity: 1 !important;
+    transform: none !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    page-break-after: auto !important;
+    break-after: auto !important;
+  }
+  html:not(.print-pdf) .reveal .slides section:not(:last-child){
+    page-break-after: always !important;
+    break-after: page !important;
+  }
+  html.print-pdf .pdf-page:last-child,
+  html.reveal-print .pdf-page:last-child{
+    page-break-after: auto !important;
+    break-after: auto !important;
+  }
+
+  html:not(.print-pdf) .reveal h1,
+  html:not(.print-pdf) .reveal h2,
+  html:not(.print-pdf) .reveal h3,
+  html:not(.print-pdf) .reveal h4,
+  html:not(.print-pdf) .reveal p,
+  html:not(.print-pdf) .reveal li{
+    font-size: inherit !important;
+    color: inherit !important;
+    line-height: inherit !important;
+    letter-spacing: inherit !important;
+    text-align: inherit !important;
+    height: auto !important;
+  }
+
+  html:not(.print-pdf) .reveal .slide-title{ font-size: 62px !important; }
+  html:not(.print-pdf) #cost .slide-title{ font-size: 60px !important; }
+  html:not(.print-pdf) #window .slide-title{ font-size: 55px !important; }
+  html:not(.print-pdf) #new-models .slide-title{ font-size: 58px !important; }
+  html:not(.print-pdf) #takeaways .slide-title{ font-size: 46px !important; color: var(--mute) !important; }
+
+  html:not(.print-pdf) .reveal .slide-body{
+    display: flex !important;
+    flex: 1 1 auto !important;
+    align-items: center !important;
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+  }
+  html:not(.print-pdf) #patterns .slide-body,
+  html:not(.print-pdf) #takeaways .slide-body{
+    align-items: flex-start !important;
+  }
+  html:not(.print-pdf) .reveal .bullets{
+    display: block !important;
+    margin: 52px 0 0 0 !important;
+    width: 100% !important;
+  }
+  html:not(.print-pdf) .reveal .bullets li{
+    font-size: 37px !important;
+    margin: 0 0 30px 0 !important;
+  }
+  html:not(.print-pdf) .reveal .bullets.five li{
+    font-size: 33px !important;
+    margin: 0 0 22px 0 !important;
+  }
+
+  html:not(.print-pdf) .reveal .patterns{
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 28px !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
+  html:not(.print-pdf) .reveal .pattern{
+    display: block !important;
+    width: auto !important;
+    margin: 0 !important;
+    background: var(--wash) !important;
+  }
+  html:not(.print-pdf) .reveal .pattern.is-pick{
+    background: #EAF1F8 !important;
+  }
+  html:not(.print-pdf) .reveal .pattern h3{ font-size: 34px !important; }
+  html:not(.print-pdf) .reveal .pattern li{ font-size: 24px !important; margin: 0 0 14px 0 !important; }
+
+  html:not(.print-pdf) .reveal .moves{
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 38px 56px !important;
+    width: 100% !important;
+    margin: 44px 0 0 0 !important;
+  }
+  html:not(.print-pdf) .reveal .move{
+    display: grid !important;
+    grid-template-columns: 52px 1fr !important;
+    width: auto !important;
+    margin: 0 !important;
+  }
+  html:not(.print-pdf) .reveal .move h3{ font-size: 31px !important; }
+  html:not(.print-pdf) .reveal .move p{ font-size: 24px !important; color: var(--mute) !important; }
+
+  html:not(.print-pdf) .reveal .takeaways{
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
+  html:not(.print-pdf) .reveal .takeaways li{
+    display: grid !important;
+    grid-template-columns: 68px 1fr !important;
+    font-size: 46px !important;
+    margin: 0 0 34px 0 !important;
+    width: auto !important;
+  }
+
+  html:not(.print-pdf) .reveal #title{
+    justify-content: flex-start !important;
+  }
+  html:not(.print-pdf) .reveal .title-lead{
+    display: block !important;
+    margin: 36px 0 0 0 !important;
+    width: auto !important;
+  }
+  html:not(.print-pdf) .reveal .title-byline{
+    display: block !important;
+    margin-top: auto !important;
+    padding-top: 64px !important;
+    width: auto !important;
+  }
+  html:not(.print-pdf) .reveal .title-label{ font-size: 24px !important; margin: 0 0 30px 0 !important; }
+  html:not(.print-pdf) .reveal .title-main{ font-size: 128px !important; color: var(--ink) !important; }
+  html:not(.print-pdf) .reveal .title-sub{ font-size: 40px !important; margin: 12px 0 0 0 !important; }
+  html:not(.print-pdf) .reveal .title-author{ font-size: 29px !important; }
+  html:not(.print-pdf) .reveal .title-date{ font-size: 25px !important; margin: 6px 0 0 0 !important; }
+
+  .reveal .slides section,
+  section.invert,
+  section.wash,
+  .pattern,
+  .pattern.is-pick{
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
 }
