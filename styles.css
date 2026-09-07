@@ -73,7 +73,7 @@
   line-height: 1.32;
   color: var(--mute);
   margin-bottom: 30px;
-  max-width: 30ch;
+  white-space: nowrap;
 }
 .title-main{
   font-family: var(--serif);
@@ -136,6 +136,7 @@ section.invert .bullets li.punch{
 }
 
 /* ============ THREE PATTERNS ============ */
+#patterns .slide-body{ align-items: flex-start; padding-top: 52px; }
 .patterns{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
 .pattern{
   background: var(--wash);
@@ -154,6 +155,7 @@ section.invert .bullets li.punch{
 .pattern li:last-child{ margin-bottom: 0; }
 
 /* ============ TAKEAWAYS — biggest type in the deck ============ */
+#takeaways .slide-body{ align-items: flex-start; padding-top: 52px; }
 .takeaways{ list-style: none; margin: 0; padding: 0; counter-reset: t; }
 .takeaways li{
   counter-increment: t;
