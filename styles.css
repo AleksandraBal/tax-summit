@@ -1,0 +1,208 @@
+/* ============================================================
+   AI & Tax
+   Display: Newsreader — editorial serif, carries the argument.
+   Text:    IBM Plex Sans — engineered, precise, carries the detail.
+   The pairing is the point: law and systems, which is the talk.
+   ============================================================ */
+:root{
+  --ink:    #0A2540;
+  --paper:  #FFFFFF;
+  --accent: #635BFF;
+  --signal: #00D4FF;
+  --mute:   #64758A;
+  --wash:   #F2F6FA;
+  --hair:   #D8E1EA;
+
+  --serif: "Newsreader", Georgia, "Times New Roman", serif;
+  --sans:  "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+.reveal{
+  font-family: var(--sans);
+  font-size: 32px;
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+}
+.reveal .slides{ text-align: left; }
+.reveal .slides section{
+  height: 100%;
+  box-sizing: border-box;
+  padding: 76px 96px 68px 96px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- Titles: serif, no rule above ---------- */
+.slide-title{
+  font-family: var(--serif);
+  font-size: 62px;
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.012em;
+  margin: 0;
+  max-width: 19ch;
+}
+
+/* ---------- Standard bullets: no markers, space does the work ---------- */
+.bullets{
+  list-style: none;
+  margin: 52px 0 0 0;
+  padding: 0;
+  max-width: 32ch;
+}
+.bullets li{
+  font-size: 37px;
+  font-weight: 400;
+  line-height: 1.32;
+  margin-bottom: 30px;
+}
+.bullets li:last-child{ margin-bottom: 0; }
+.bullets.five li{ font-size: 33px; margin-bottom: 22px; }
+
+.slide-body{ flex: 1; min-height: 0; display: flex; align-items: center; }
+.slide-body > *{ width: 100%; }
+
+/* ============ TITLE SLIDE ============ */
+#title{ justify-content: space-between; }
+.title-label{
+  font-family: var(--sans);
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.32;
+  color: var(--mute);
+  margin-bottom: 30px;
+  max-width: 30ch;
+}
+.title-main{
+  font-family: var(--serif);
+  font-size: 128px;
+  font-weight: 400;
+  letter-spacing: -0.028em;
+  line-height: 0.98;
+  margin: 0;
+}
+.title-sub{
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 40px;
+  font-weight: 400;
+  color: var(--mute);
+  margin-top: 20px;
+}
+.title-author{ font-size: 29px; font-weight: 600; }
+.title-date{ font-size: 25px; color: var(--mute); margin-top: 6px; }
+.geo-accent{ position: absolute; right: 0; bottom: 0; width: 200px; height: 200px; }
+
+/* ============ INVERTED SLIDE — the one dark moment ============ */
+section.invert{ background: var(--ink); color: #FFFFFF; }
+section.invert .slide-title{ color: #FFFFFF; }
+section.invert .bullets li{ color: rgba(255,255,255,0.88); }
+section.invert .bullets li.punch{
+  color: var(--signal);
+  font-weight: 500;
+}
+.reveal section.invert .slide-number{ color: rgba(255,255,255,0.45); }
+
+/* ============ FOUR-MOVE GRID (prompting) ============ */
+.moves{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 38px 56px;
+  margin-top: 44px;
+}
+.move{ display: grid; grid-template-columns: 52px 1fr; align-items: start; }
+.move .n{
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 38px;
+  color: var(--accent);
+  line-height: 1;
+  padding-top: 4px;
+}
+.move h3{
+  font-family: var(--sans);
+  font-size: 31px;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+}
+.move p{
+  font-size: 24px;
+  line-height: 1.34;
+  color: var(--mute);
+  margin: 0;
+}
+
+/* ============ THREE PATTERNS ============ */
+.patterns{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.pattern{
+  background: var(--wash);
+  border-top: 4px solid var(--hair);
+  padding: 30px 28px 32px 28px;
+}
+.pattern.is-pick{ border-top-color: var(--signal); background: #EAF1F8; }
+.pattern h3{
+  font-family: var(--serif);
+  font-size: 34px;
+  font-weight: 500;
+  margin: 0 0 20px 0;
+}
+.pattern ul{ list-style: none; margin: 0; padding: 0; }
+.pattern li{ font-size: 24px; line-height: 1.34; margin-bottom: 14px; }
+.pattern li:last-child{ margin-bottom: 0; }
+
+/* ============ TAKEAWAYS — biggest type in the deck ============ */
+.takeaways{ list-style: none; margin: 0; padding: 0; counter-reset: t; }
+.takeaways li{
+  counter-increment: t;
+  display: grid;
+  grid-template-columns: 68px 1fr;
+  align-items: baseline;
+  margin-bottom: 34px;
+  font-size: 46px;
+  line-height: 1.2;
+  font-weight: 400;
+}
+.takeaways li:last-child{ margin-bottom: 0; }
+.takeaways li::before{
+  content: counter(t);
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 34px;
+  color: var(--accent);
+}
+#takeaways .slide-title{ font-size: 46px; color: var(--mute); }
+
+
+/* ---------- Brand mark + section rhythm ---------- */
+.reveal .slides section:not(#title){
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect x='80' y='90' width='110' height='65' fill='%2300D4FF'/%3E%3Crect x='105' y='60' width='90' height='60' fill='%230A2540'/%3E%3Crect x='125' y='110' width='80' height='70' fill='%23635BFF'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  background-size: 136px 136px;
+}
+/* light wash marks a change of section — the eye registers it, no label needed */
+.reveal .slides section.wash{ background-color: #F5F8FB; }
+.reveal .slides section.invert{
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect x='80' y='90' width='110' height='65' fill='%2300D4FF'/%3E%3Crect x='105' y='60' width='90' height='60' fill='%23FFFFFF'/%3E%3Crect x='125' y='110' width='80' height='70' fill='%23635BFF'/%3E%3C/svg%3E");
+  background-color: var(--ink);
+}
+/* slide number moves left; the mark owns the bottom-right corner */
+.reveal .slide-number{ right: auto; left: 36px; }
+
+/* ---------- Chrome ---------- */
+.reveal .slide-number{
+  background: transparent;
+  color: var(--mute);
+  font-family: var(--sans);
+  font-size: 17px;
+  bottom: 26px;
+}
+
+/* ---------- Print / PDF ---------- */
+@media print{
+  .reveal .slides section{ padding: 68px 88px 60px 88px; }
+  .reveal .slides section, section.invert, .pattern, .pattern.is-pick{
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+}
