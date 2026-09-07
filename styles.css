@@ -33,7 +33,7 @@
   flex-direction: column;
 }
 
-/* ---------- Titles: serif, no rule above ---------- */
+/* ---------- Titles: serif, one line when the slide can hold it ---------- */
 .slide-title{
   font-family: var(--serif);
   font-size: 62px;
@@ -41,7 +41,7 @@
   line-height: 1.08;
   letter-spacing: -0.012em;
   margin: 0;
-  max-width: 19ch;
+  white-space: nowrap;
 }
 
 /* ---------- Standard bullets: no markers, space does the work ---------- */
@@ -49,13 +49,13 @@
   list-style: none;
   margin: 52px 0 0 0;
   padding: 0;
-  max-width: 32ch;
 }
 .bullets li{
   font-size: 37px;
   font-weight: 400;
   line-height: 1.32;
   margin-bottom: 30px;
+  white-space: nowrap;
 }
 .bullets li:last-child{ margin-bottom: 0; }
 .bullets.five li{ font-size: 33px; margin-bottom: 22px; }
@@ -64,7 +64,8 @@
 .slide-body > *{ width: 100%; }
 
 /* ============ TITLE SLIDE ============ */
-#title{ justify-content: space-between; }
+#title{ justify-content: flex-start; }
+.title-lead{ margin-top: 36px; }
 .title-label{
   font-family: var(--sans);
   font-size: 24px;
@@ -88,8 +89,9 @@
   font-size: 40px;
   font-weight: 400;
   color: var(--mute);
-  margin-top: 20px;
+  margin: 12px 0 0 0;
 }
+.title-byline{ margin-top: auto; padding-top: 64px; }
 .title-author{ font-size: 29px; font-weight: 600; }
 .title-date{ font-size: 25px; color: var(--mute); margin-top: 6px; }
 .geo-accent{ position: absolute; right: 0; bottom: 0; width: 200px; height: 200px; }
@@ -162,6 +164,7 @@ section.invert .bullets li.punch{
   font-size: 46px;
   line-height: 1.2;
   font-weight: 400;
+  white-space: nowrap;
 }
 .takeaways li:last-child{ margin-bottom: 0; }
 .takeaways li::before{
@@ -172,6 +175,11 @@ section.invert .bullets li.punch{
   color: var(--accent);
 }
 #takeaways .slide-title{ font-size: 46px; color: var(--mute); }
+
+/* Long titles: step down just enough to stay on one line at 1280px */
+#cost .slide-title{ font-size: 60px; }
+#window .slide-title{ font-size: 55px; }
+#new-models .slide-title{ font-size: 58px; }
 
 
 /* ---------- Brand mark + section rhythm ---------- */
